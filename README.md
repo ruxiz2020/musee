@@ -27,3 +27,18 @@ env/bin/pip install . -U --force-reinstall --no-deps
 `````bash
 env/bin/python musee/keyword_extract/extractKeywords.py
 `````
+
+## demo UI
+
+create db in local postgresql
+
+`````bash
+createdb musee
+`````
+
+Run db migration
+
+`````bash
+env/bin/python musee/frontend/manage.py db init
+env/bin/python musee/frontend/manage.py db migrate
+`````

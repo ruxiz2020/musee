@@ -2,3 +2,10 @@ requests
 bs4
 lxml
 yake
+flask
+flask_sqlalchemy
+flask_cors
+flask_migrate
+flask_script
+sqlalchemy
+psycopg2

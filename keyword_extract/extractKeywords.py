@@ -42,9 +42,9 @@ if __name__ == "__main__":
     extractText = TextFromUrl(url)
     text = extractText.extract_text_from_html()
 
-    extractKeywords = ExtractKeywords(text, 10)
+    extractKeywords = ExtractKeywords(text)
     extractKeywords.extract_keywords()
     keywords = extractKeywords.keywords
 
-    print(text[:300])
+    print(text)
     print(keywords)
