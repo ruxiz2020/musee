@@ -42,3 +42,8 @@ Run db migration
 env/bin/python musee/frontend/manage.py db init
 env/bin/python musee/frontend/manage.py db migrate
 `````
+
+Run UI
+`````bash
+env/bin/python musee/frontend/app.py
+`````

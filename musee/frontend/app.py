@@ -4,19 +4,8 @@ from flask import render_template, session, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from musee.frontend.model import setup_db, KeyWords, db
-#from auth import AuthError, requires_auth, requires_signed_in
-# from authlib.flask.client import OAuth
 from six.moves.urllib.parse import urlencode
 from musee.frontend.config import config
-
-
-#AUTH0_DOMAIN = auth0_config['AUTH0_DOMAIN']
-#ALGORITHMS = auth0_config['ALGORITHMS']
-#AUTH0_AUDIENCE = auth0_config['AUTH0_AUDIENCE']
-#AUTH0_CALLBACK_URL = auth0_config['AUTH0_CALLBACK_URL']
-#AUTH0_CLIENT_ID = auth0_config['AUTH0_CLIENT_ID']
-#AUTH0_CLIENT_SECRET = auth0_config['AUTH0_CLIENT_SECRET']
-#AUTH0_BASE_URL = 'https://' + auth0_config['AUTH0_DOMAIN']
 
 
 def create_app(test_config=None):
@@ -37,20 +26,6 @@ def create_app(test_config=None):
         response.headers.add('Access-Control-Allow-Methods',
                              'GET,PATCH,POST,DELETE,OPTIONS')
         return response
-
-    # oauth = OAuth(app)
-
-    # auth0 = oauth.register(
-    #    'auth0',
-    #    client_id=AUTH0_CLIENT_ID,
-    #    client_secret=AUTH0_CLIENT_SECRET,
-    #    api_base_url=AUTH0_BASE_URL,
-    #    access_token_url=AUTH0_BASE_URL + '/oauth/token',
-    #    authorize_url=AUTH0_BASE_URL + '/authorize',
-    #    client_kwargs={
-    #        'scope': 'openid profile email',
-    #    },
-    #)
 
     # Setup home route
 
@@ -80,7 +55,7 @@ def create_app(test_config=None):
     """Single File Keyword Routes"""
 
     # Route for getting all movies
-    @app.route('/singleTexts')
+    @app.route('/singlefile')
     def get_single_text():
         """Get fingle text keywords route"""
 
@@ -92,7 +67,7 @@ def create_app(test_config=None):
         }), 200
 
     # Route for getting a specific movie
-    @app.route('/singleTexts/<int:id>')
+    @app.route('/singlefile/<int:id>')
     def get_single_text_by_id(id):
         """Get a specific text route"""
         keyword=KeyWords.query.get(id)
@@ -106,7 +81,7 @@ def create_app(test_config=None):
                 'keyword': keyword.format(),
             }), 200
 
-    @app.route('/singleTexts', methods = ['POST'])
+    @app.route('/singlefile', methods = ['POST'])
     def post_single_text():
         """Create a single text route"""
         # Process request data
@@ -129,7 +104,7 @@ def create_app(test_config=None):
         except Exception:
             abort(500)
 
-    @app.route('/singleTexts/<int:id>', methods = ['PATCH'])
+    @app.route('/singlefile/<int:id>', methods = ['PATCH'])
     def patch_single_text(id):
         """Update a single text route"""
 
@@ -157,7 +132,7 @@ def create_app(test_config=None):
         except Exception:
             abort(500)
 
-    @app.route('/singleTexts/<int:id>', methods = ['DELETE'])
+    @app.route('/singlefile/<int:id>', methods = ['DELETE'])
     def delete_single_text(id):
         """Delete a single text route"""
         keyword=KeyWords.query.get(id)

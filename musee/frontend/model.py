@@ -15,7 +15,7 @@ def setup_db(app, database_path=database_path):
 
 
 class KeyWords(db.Model):
-    __tablename__ = 'file_keywords'
+    __tablename__ = 'KeyWords'
     id = Column(Integer, primary_key=True)
     url = Column(String, nullable=False)
     keywords = Column(String, nullable=False)
